@@ -8,6 +8,9 @@ gem 'paper_trail',                    '~> 9.0.0'
 gem 'active_model_serializers',       '~> 0.10.7'
 gem 'dalli',                          '~> 2.7.7'
 gem 'sidekiq',                        '~> 5.2.2'
+gem 'tzinfo-data', platforms: [:x64_mingw,:mingw, :mswin]
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
 
 group :development do
   gem 'listen',                       '>= 3.0.5', '< 3.2'

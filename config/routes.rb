@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       ### AUTHENTICATION ###
       post 'auth' => 'user_token#create'
+      post 'login', to: 'authentication#login'
 
       ### USERS ###
       resources :users
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
 
       ### LOCATIONS ###
       resources :locations
+
+      ### EventAttendees ###
+      resources :event_attendees
     end
   end
 end

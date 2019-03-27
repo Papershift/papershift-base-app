@@ -3,5 +3,5 @@ class UserSerializer < ActiveModel::Serializer
   cache key: 'user'
 
   ### ATTRIBUTES ###
-  attributes :name, :email
+  attributes :name, :email, :id
 end
