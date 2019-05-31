@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
       ### LOCATIONS ###
       resources :locations
+
+      post 'guest_lists/:event_id', to: 'guest_lists#participate'
+
     end
   end
 end

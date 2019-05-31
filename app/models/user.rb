@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_paper_trail
 
+  has_many :guest_lists
+  has_many :events, through: :guest_lists
+
   ### VALIDATIONS ###
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
