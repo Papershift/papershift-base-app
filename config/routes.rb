@@ -5,7 +5,13 @@ Rails.application.routes.draw do
       post 'auth' => 'user_token#create'
 
       ### USERS ###
-      resources :users
+      resources :users do
+        member do
+          resources :assignments, only: %i[index]
+        end
+      end
+
+      resources :assignments, only: %i[index create destroy]
 
       ### EVENTS ###
       resources :events
