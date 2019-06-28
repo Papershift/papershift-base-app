@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_paper_trail
 
+  ### ASSOCIATIONS ###
+  has_many :assignments
+  has_many :events, through: :assignments
+  has_many :locations, through: :events
+
   ### VALIDATIONS ###
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
