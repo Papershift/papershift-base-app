@@ -4,6 +4,12 @@ class User < ApplicationRecord
   ### ASSOCIATIONS ###
   has_many :assignments
   has_many :events, through: :assignments
+
+  # Chosen to keep locations through events, based on:
+  # User has several locations, because he has several events.
+  # Made sense based on what I understood from the app. If the user has to set
+  # locations where he's willing to work, then a has many or a
+  # has_and_belongs_to_many between users-locations had to be done.
   has_many :locations, through: :events
 
   ### VALIDATIONS ###
