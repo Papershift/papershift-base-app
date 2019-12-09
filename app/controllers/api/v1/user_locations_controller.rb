@@ -3,30 +3,28 @@ module Api
 class UserLocationsController < ApplicationController
 	
 	
-#POST/LOCATIONS/1/USER
+#POST/LOCATIONS/1/USERS
 def create
-	@location=Event.find(params[:location_id])
-	@user=User.find_or_create_by(user_params)
-	@user_location = User_location.new(user: @user, location: @location)
+	@location=Location.find(params[:location_id])
+	@user_location = @location.user_locations.new(user_location_params)
     if @user_location.save
-      render json: @user_location, status: :created, user_location: @user_location
+      render json: @user_location, status: :created
     else
       render json: @user_location.errors, status: :unprocessable_entity
     end
 
 end
-	
-# DELETE /locations/1/USER/1
+# DELETE /LOCATIONS/1/USERS/1
+
 def destroy
-	@location=Location.find(params[:location_id])
-	@user=@location.users.find(params[:id])
-	@location.users.delete(@user)
+	@user_location=UserLocation.find_by!(location_id: params[:location_id], user_id: params[:id])
+	@user_location.destroy
 end
 
+def user_location_params
+    params.require(:user_location).permit(:user_id)
+ end	
 
-def user_params
-      params.require(:user).permit(:name,:email,:deleted_at)
-    end
 
 
 end

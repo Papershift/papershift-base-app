@@ -15,11 +15,7 @@ class LocationsController < ApplicationController
     render json: @location
   end
 
-<<<<<<< Updated upstream
-=======
 
-   
->>>>>>> Stashed changes
   # POST /locations
   def create
     @location = Location.new(location_params)

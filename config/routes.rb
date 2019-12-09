@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
       ### USERS ###
       resources :users
-<<<<<<< Updated upstream
-    end
-=======
+
 
       ### EVENTS ###
       #resources :events
@@ -29,6 +27,5 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :destroy], controller: 'user_locations'
       end
   end
->>>>>>> Stashed changes
   end
 end

@@ -4,29 +4,27 @@ module Api
 class UserEventsController < ApplicationController
 
 
-#POST/EVENTS/1/USER
+#POST/EVENTS/1/USERS
 def create
 	@event=Event.find(params[:event_id])
-	@user=User.find_or_create_by(user_params)
-	@user_event = User_Event.new(user: @user, event: @event)
+	@user_event = @event.user_events.new(user_event_params)
     if @user_event.save
-      render json: @user_event, status: :created, user_event: @user_event
+      render json: @user_event, status: :created
     else
       render json: @user_event.errors, status: :unprocessable_entity
     end
 
 end
-# DELETE /locations/1/USER/1
+# DELETE /EVENTS/1/USERS/1
 
 def destroy
-	@event=Event.find(params[:event_id])
-	@user=@event.users.find(params[:id])
-	@event.users.delete(@user)
+	@user_event=UserEvent.find_by!(event_id: params[:event_id], user_id: params[:id])
+	@user_event.destroy
 end
 
-def user_params
-      params.require(:user).permit(:name,:email,:deleted_at)
-    end
+def user_event_params
+    params.require(:user_event).permit(:user_id)
+ end
 
 end
 
