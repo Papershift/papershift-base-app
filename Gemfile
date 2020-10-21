@@ -11,5 +11,5 @@ gem 'sidekiq',                        '~> 5.2.2'
 
 group :development do
   gem 'listen',                       '>= 3.0.5', '< 3.2'
-  gem 'dotenv-rails',                 '~> 1.0.2'
+  gem 'dotenv-rails',                 '~> 2.7.6'
 end
